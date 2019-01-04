@@ -34,11 +34,11 @@ public class EmoticonGenerater {
     public void drawText(String content) {
         mBitmap = Bitmap.createBitmap(mWidth, mHeight, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
-        mCanvas.drawColor(MyApplication.getAppContext().getResources().getColor(R.color.white));
+        mCanvas.drawColor(Color.WHITE);
         mCanvas.drawBitmap(mBitmap, 0.0f, 0.0f, mTextPaint);
-        mTextPaint.setColor(MyApplication.getAppContext().getResources().getColor(R.color.common_black_bac));
-        mTextPaint.setTextSize(12.0f);
-        mCanvas.drawText(content, 0, 0, mTextPaint);
+        mTextPaint.setColor(Color.BLACK);
+        mTextPaint.setTextSize(20);
+        mCanvas.drawText(content, 0, 20, mTextPaint);
         mCanvas.save(Canvas.ALL_SAVE_FLAG);
         mCanvas.restore();
         File file = new File(Environment.getExternalStorageDirectory().getPath() + "/test.gif");

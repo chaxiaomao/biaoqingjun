@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/displayTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="module_weixin_biaoqing"
+        />
+
+    <EditText
+        android:id="@+id/contentEt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/displayTv"
+        />
+
+    <Button
+        android:id="@+id/coverBtn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="转换"
+        app:layout_constraintTop_toBottomOf="@+id/contentEt"
+        />
+
+</android.support.constraint.ConstraintLayout>

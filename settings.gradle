@@ -1,0 +1,1 @@
+include ':app', ':core', ':projectCore', ':module_weixin_biaoqing'

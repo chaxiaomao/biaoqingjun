@@ -1,5 +1,6 @@
 package com.dev.autosize.core.util;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -32,8 +33,8 @@ public class StatuBarCompat {
     private static final String TAG = "StatuBarCompat";
 
     private static String osType;
-    private static final String MIUI_OS    = "miui";
-    private static final String FLY_OS     = "fly";
+    private static final String MIUI_OS = "miui";
+    private static final String FLY_OS = "fly";
     private static final String ANDROID_OS = "6.0+";
 
     private static final int COLOR_DEFAULT = Color.TRANSPARENT;
@@ -131,13 +132,13 @@ public class StatuBarCompat {
     // 魅族FlymeUI
     private static void setStatusBarFontIconDarkForFlyme(boolean dark, Activity activity) {
         try {
-            Window                     window     = activity.getWindow();
-            WindowManager.LayoutParams lp         = window.getAttributes();
-            Field                      darkFlag   = WindowManager.LayoutParams.class.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
-            Field                      meizuFlags = WindowManager.LayoutParams.class.getDeclaredField("meizuFlags");
+            Window window = activity.getWindow();
+            WindowManager.LayoutParams lp = window.getAttributes();
+            Field darkFlag = WindowManager.LayoutParams.class.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
+            Field meizuFlags = WindowManager.LayoutParams.class.getDeclaredField("meizuFlags");
             darkFlag.setAccessible(true);
             meizuFlags.setAccessible(true);
-            int bit   = darkFlag.getInt(null);
+            int bit = darkFlag.getInt(null);
             int value = meizuFlags.getInt(lp);
             if (dark) {
                 value |= bit;
@@ -154,11 +155,11 @@ public class StatuBarCompat {
     //MIUI 设置状态栏
     private static void setStatusBarFontIconDarkForMIUI(boolean dark, Activity activity) {
         try {
-            Window window         = activity.getWindow();
-            Class  clazz          = activity.getWindow().getClass();
-            Class  layoutParams   = Class.forName("android.view.MiuiWindowManager$LayoutParams");
-            Field  field          = layoutParams.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE");
-            int    darkModeFlag   = field.getInt(layoutParams);
+            Window window = activity.getWindow();
+            Class clazz = activity.getWindow().getClass();
+            @SuppressLint("PrivateApi") Class layoutParams = Class.forName("android.view.MiuiWindowManager$LayoutParams");
+            Field field = layoutParams.getField("EXTRA_FLAG_STATUS_BAR_DARK_MODE");
+            int darkModeFlag = field.getInt(layoutParams);
             Method extraFlagField = clazz.getMethod("setExtraFlags", int.class, int.class);
             if (dark) {    //状态栏亮色且黑色字体
                 extraFlagField.invoke(window, darkModeFlag, darkModeFlag);
@@ -203,7 +204,7 @@ public class StatuBarCompat {
     }
 
     private static String getSystemProperty(String propName) {
-        String         line;
+        String line;
         BufferedReader input = null;
         try {
             Process p = Runtime.getRuntime().exec("getprop " + propName);
@@ -233,8 +234,8 @@ public class StatuBarCompat {
     public static void setImmersiveStatusBarWithView(boolean fontIconDark, Activity activity, View holdSpaceView) {
         setImmersiveStatusBarWithView(fontIconDark, activity);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-//            holdSpaceView.setVisibility(View.GONE);
-//            activity.getWindow().setStatusBarColor(statusBarColor);
+            //            holdSpaceView.setVisibility(View.GONE);
+            //            activity.getWindow().setStatusBarColor(statusBarColor);
             setHolderViewHeightEqualsStatuBar(activity, holdSpaceView);
             return;
         }

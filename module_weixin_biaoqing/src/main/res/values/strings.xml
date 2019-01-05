@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">module_weixin_biaoqing</string>
+
+    <string name="transform_success">转换成功</string>
+    <string name="transform_btn">点击生成表情</string>
+    <string name="tip_text_empty">请输入文字</string>
+    <string name="tip_image_empty">请先制作图片</string>
+    <string name="clear_text">清空文字</string>
+    <string name="share">分享</string>
+    <string name="share_way">选择分享方式</string>
 </resources>

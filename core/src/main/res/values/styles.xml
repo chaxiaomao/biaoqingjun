@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -11,9 +11,7 @@
         <item name="android:windowActionBar">false</item>
         <!--窗口的颜色-->
         <item name="android:windowBackground">@android:color/white</item>
-
-
-        //解决项目启动时的白屏显示
+        <!--解决项目启动时的白屏显示-->
         <!--<item name="android:windowIsTranslucent">true</item>-->
         <!--     <item name="android:windowIsTranslucent">true</item>
              <item name="android:windowNoTitle">true</item>

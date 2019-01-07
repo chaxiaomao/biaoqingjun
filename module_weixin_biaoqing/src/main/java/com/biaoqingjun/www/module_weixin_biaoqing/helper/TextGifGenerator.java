@@ -18,13 +18,13 @@ import java.io.IOException;
  * Created by Administrator on 2019-01-04.
  */
 
-public class EmoticonGenerater {
+public class TextGifGenerator {
 
-    private static int mWidth = 400;
-    private static int mFrontSize = 40;
-    private static int mDistance = 50;
-    private static int mPreLineTextCount = 10;
-    private static int mPreLineHeight = 60;
+    private final static int mWidth = 400; // 背景宽
+    private final static int mFrontSize = 40; // 字体大小 px
+    private final static int mDistance = 50; // 距离画布顶部 像素
+    private final static int mPreLineTextCount = 10; // 每行字数
+    private final static int mPreLineHeight = 60; // 每行高度
 
     public static File drawImage(String content) {
 
@@ -52,8 +52,8 @@ public class EmoticonGenerater {
         canvas.save(Canvas.ALL_SAVE_FLAG);
         canvas.restore();
         AnimatedGifEncoder encoder = new AnimatedGifEncoder();
-        File file = new File(Environment.getExternalStorageDirectory().getPath() + "/biaoqingjun"
-                + System.currentTimeMillis() + ".gif");
+        File file = new File(Environment.getExternalStorageDirectory().getPath() + "/biaoqingjun",
+                System.currentTimeMillis() + ".gif");
         try {
             FileOutputStream fos = new FileOutputStream(file);
             encoder.start(fos);

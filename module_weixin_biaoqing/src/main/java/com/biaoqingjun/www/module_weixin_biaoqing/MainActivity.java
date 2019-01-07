@@ -2,18 +2,15 @@ package com.biaoqingjun.www.module_weixin_biaoqing;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.graphics.NinePatch;
 import android.net.Uri;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.biaoqingjun.www.module_weixin_biaoqing.helper.EmoticonGenerater;
+import com.biaoqingjun.www.module_weixin_biaoqing.helper.TextGifGenerator;
 import com.dev.autosize.core.base.mvc.BaseMvcActivity;
 import com.dev.autosize.core.util.KeyboardUtils;
 import com.dev.autosize.core.util.ToastUtils;
@@ -21,7 +18,6 @@ import com.dev.autosize.core.util.ToastUtils;
 import java.io.File;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
  * Created by Administrator on 2019-01-04.
@@ -69,10 +65,12 @@ public class MainActivity extends BaseMvcActivity implements Toolbar.OnMenuItemC
             return;
         }
         KeyboardUtils.hideSoftInput(contentEt);
-        mFile = EmoticonGenerater.drawImage(contentEt.getText().toString().trim());
+        mFile = TextGifGenerator.drawImage(contentEt.getText().toString().trim());
         if (mFile != null) {
             ToastUtils.showShort(this, R.string.transform_success);
             display.setImageBitmap(BitmapFactory.decodeFile(mFile.getPath()));
+        } else {
+            ToastUtils.showShort(this, R.string.transform_fail);
         }
     }
 
@@ -102,15 +100,7 @@ public class MainActivity extends BaseMvcActivity implements Toolbar.OnMenuItemC
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-
-    @Override
     public boolean onMenuItemClick(MenuItem item) {
-        KeyboardUtils.hideSoftInput(contentEt);
         if (item.getItemId() == R.id.clear) {
             contentEt.setText("");
         } else if (item.getItemId() == R.id.share){
@@ -128,7 +118,8 @@ public class MainActivity extends BaseMvcActivity implements Toolbar.OnMenuItemC
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(mFile));
-        startActivity(Intent.createChooser(intent, getResources().getString(R.string.share)));
+        startActivity(Intent.createChooser(intent, getResources().getString(R.string.share_way)));
+        KeyboardUtils.hideSoftInput(contentEt);
     }
 
 }

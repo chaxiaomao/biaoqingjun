@@ -109,6 +109,9 @@ public class MainActivity extends BaseMvcActivity implements Toolbar.OnMenuItemC
         return false;
     }
 
+    /**
+     * 自带分享
+     */
     private void share() {
         if (mFile == null) {
             ToastUtils.showShort(this, R.string.tip_image_empty);

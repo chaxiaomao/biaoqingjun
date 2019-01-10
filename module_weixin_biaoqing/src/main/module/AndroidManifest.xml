@@ -3,7 +3,7 @@
 
     <!--android:name属性——是用来设置所有activity属于哪个application的，默认是android.app.Application。-->
     <application
-        android:name="com.biaoqingjun.www.module_weixin_biaoqing.MyApplication"
+        android:name="com.biaoqingjun.www.module_weixin_biaoqing.WxBiaoqingApplication"
         android:allowBackup="true"
         android:label="微信表情模块"
         android:supportsRtl="true"

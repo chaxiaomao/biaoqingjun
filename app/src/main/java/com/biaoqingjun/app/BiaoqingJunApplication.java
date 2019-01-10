@@ -1,8 +1,6 @@
 package com.biaoqingjun.app;
 
 
-import android.app.Application;
-
 import com.dev.autosize.core.BaseApplication;
 import com.dev.autosize.projectcode.constant.RouterConfig;
 
@@ -10,11 +8,11 @@ import com.dev.autosize.projectcode.constant.RouterConfig;
  * Created by Administrator on 2018-12-26.
  */
 
-public class MyApplication extends BaseApplication {
+public class BiaoqingJunApplication extends BaseApplication {
 
-    private static MyApplication myApplication;
+    private static BiaoqingJunApplication myApplication;
     // 初始化
-    public static MyApplication getInstance() {
+    public static BiaoqingJunApplication getInstance() {
         return myApplication;
     }
 
